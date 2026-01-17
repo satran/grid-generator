@@ -38,13 +38,12 @@ document.getElementById('grid-form').addEventListener('submit', function (e) {
     }
 
     // Analytics
-    gtag('event', 'params', {
-        'type': type,
-        'spacing': spacing,
-        'paper': paperSize,
-        'gridColor': gridColor,
-        'gridSize': gridSize
-    });
+    gtag('event', 'gridType', type);
+    gtag('event', 'gridSpacing', spacing);
+    gtag('event', 'paper', paperSize);
+    gtag('event', 'gridColor', gridColor);
+    gtag('event', 'gridSize', gridSize);
+
     doc.save(`${type}_${paperSize}_${spacing}mm.pdf`);
 });
 
@@ -61,8 +60,8 @@ function drawDotted(doc, width, height, spacing, color, size) {
 function drawGrid(doc, width, height, spacing, color, size) {
     // This is to ensure the grids are within the boundary 
     // of the first horizontal line and the last vertical line.
-    let vertGrids = Math.floor(height/spacing);
-    let horGrids = Math.floor(width/spacing);
+    let vertGrids = Math.floor(height / spacing);
+    let horGrids = Math.floor(width / spacing);
     height = (spacing * vertGrids);
     width = (spacing * horGrids);
 
