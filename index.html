@@ -11,11 +11,12 @@
 <body>
     <div class="container">
         <div id="consent">
-            <p>We use cookies and similar technologies to analyze our traffic. Some cookies are essential for the site to function, while others require your consent.</p>
+            <p>We use cookies and similar technologies to analyze our traffic. Some cookies are essential for the site
+                to function, while others require your consent.</p>
             <button id="accept" onclick="consentGranted()">Accept</button>
             <button id="reject" onclick="denyGranted()">Reject</button>
         </div>
-            <div class="app">
+        <div class="app">
             <h1>Grid Generator</h1>
             <form id="grid-form">
                 <div class="form-group">
@@ -51,45 +52,68 @@
                 </div>
                 <button type="submit">Generate PDF</button>
             </form>
-            
+
         </div>
     </div>
-    
+
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSM7K7H7M1"></script>
     <script>
+        // Define dataLayer and the gtag function.
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'G-PSM7K7H7M1');
-    </script>
+        // Set default consent to 'denied' as a placeholder
+        // Determine actual values based on your own requirements
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
 
-    <script>
-
-        function hideConsent() {
-            document.getElementById("consent").style.display = 'none';
-        }
-        function consentGranted() {
+        window.consentGranted = function () {
             gtag('consent', 'update', {
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'ad_storage': 'denied',
                 'analytics_storage': 'granted'
             });
-            hideConsent();
+            localStorage.setItem("consent", true);
+            // window.location.reload();
         }
-        function denyGranted() {
+        
+        window.denyGranted = function () {
             gtag('consent', 'update', {
                 'ad_user_data': 'denied',
                 'ad_personalization': 'denied',
                 'ad_storage': 'denied',
                 'analytics_storage': 'denied'
             });
+            localStorage.setItem("consent", false);
             hideConsent();
         }
+
+        window.hideConsent = function () {
+            document.getElementById("consent").style.display = 'none';
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSM7K7H7M1"></script>
+    <script>
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag() { dataLayer.push(arguments); }
+
+        window.onload = () => {
+            gtag('js', new Date());
+            gtag('config', 'G-PSM7K7H7M1');
+
+            const consent = localStorage.getItem("consent");
+            if (consent !== undefined && consent) {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+                hideConsent();
+                gtag('event', 'loaded', true);
+            }
+        };
     </script>
 </body>
 

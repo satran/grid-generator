@@ -37,6 +37,14 @@ document.getElementById('grid-form').addEventListener('submit', function (e) {
         drawLined(doc, width, height, spacing, gridColor, gridSize);
     }
 
+    // Analytics
+    gtag('event', 'params', {
+        'type': type,
+        'spacing': spacing,
+        'paper': paperSize,
+        'gridColor': gridColor,
+        'gridSize': gridSize
+    });
     doc.save(`${type}_${paperSize}_${spacing}mm.pdf`);
 });
 
