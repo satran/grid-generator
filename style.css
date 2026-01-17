@@ -8,13 +8,34 @@ body {
     margin: 0;
 }
 
+#consent {
+	font-size: 80%;
+	background: #efefef;
+	padding: 1em;
+}
+
+#consent button {
+	width: inherit;
+	font-size: 80%;
+	padding: 0.5em;
+}
+#consent p {
+	margin-top: 0;
+}
+#reject {
+	background-color: #cccccc;
+}
+
 .container {
     background: #fff;
-    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+}
+
+.container .app {
+    padding: 2rem;
 }
 
 h1 {
