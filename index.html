@@ -77,9 +77,9 @@
                 'analytics_storage': 'granted'
             });
             localStorage.setItem("consent", true);
-            // window.location.reload();
+            hideConsent();
         }
-        
+
         window.denyGranted = function () {
             gtag('consent', 'update', {
                 'ad_user_data': 'denied',
