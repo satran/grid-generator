@@ -9,21 +9,33 @@ body {
 }
 
 #consent {
-	font-size: 80%;
-	background: #efefef;
-	padding: 1em;
+    font-size: 80%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding-top: 40%;
+}
+
+#consent>div {
+    padding: 1em;
+    background-color: #fff;
+    margin: 1em;
 }
 
 #consent button {
-	width: inherit;
-	font-size: 80%;
-	padding: 0.5em;
+    width: inherit;
+    font-size: 80%;
+    padding: 0.5em;
 }
+
 #consent p {
-	margin-top: 0;
+    margin-top: 0;
 }
+
 #reject {
-	background-color: #cccccc;
+    background-color: #cccccc;
 }
 
 .container {

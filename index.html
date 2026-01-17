@@ -11,10 +11,11 @@
 <body>
     <div class="container">
         <div id="consent">
-            <p>We use cookies and similar technologies to analyze our traffic. Some cookies are essential for the site
-                to function, while others require your consent.</p>
-            <button id="accept" onclick="consentGranted()">Accept</button>
-            <button id="reject" onclick="denyGranted()">Reject</button>
+            <div>
+                <p>We use cookies to see which parts of our site you find most helpful. It’s purely for analytics—no ads, no tracking across other sites. Would you mind if we collect some data to improve?</p>
+                <button id="accept" onclick="consentGranted()">Sounds good</button>
+                <button id="reject" onclick="denyGranted()">No thanks</button>
+            </div>
         </div>
         <div class="app">
             <h1>Grid Generator</h1>
